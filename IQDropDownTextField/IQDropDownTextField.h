@@ -97,9 +97,19 @@ typedef NS_ENUM(NSInteger, IQDropDownMode) {
 @property (nonatomic, assign) BOOL isOptionalDropDown;
 
 /**
- Template for labels supplied to inputView
+ Color of the items in dropDown list.
  */
-@property (nonatomic, copy) UILabel *templateLabel;
+@property (nonatomic, strong) UIColor *itemTextColor;
+
+/**
+ Color of the item at top of dropDown list. If nil, will be the same color as other items.
+ */
+@property (nonatomic, strong) UIColor *topItemTextColor;
+
+/**
+ Font of the items in dropDown list. Size will be ignored for the first item in an OptionalDropDown
+ */
+@property (nonatomic, strong) UIFont *itemFont;
 
 
 ///----------------------

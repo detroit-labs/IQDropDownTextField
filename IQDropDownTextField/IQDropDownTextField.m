@@ -98,12 +98,8 @@
     [self setDropDownMode:IQDropDownModeTextPicker];
     [self setIsOptionalDropDown:YES];
 
-    self.templateLabel = [[UILabel alloc] init];
-    [self.templateLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.templateLabel setAdjustsFontSizeToFitWidth:YES];
-    self.templateLabel.backgroundColor = [UIColor clearColor];
-    self.templateLabel.font = [UIFont boldSystemFontOfSize:18.0];
-    self.templateLabel.textColor = [UIColor blackColor];
+    self.itemTextColor = [UIColor blackColor];
+    self.itemFont = [UIFont boldSystemFontOfSize:18.0];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -149,13 +145,31 @@
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
-    UILabel *labelText = [self.templateLabel copy];
+    UILabel *labelText = [[UILabel alloc] init];
+    labelText.textColor = self.itemTextColor;
+    labelText.font = self.itemFont;
+
+    [labelText setTextAlignment:NSTextAlignmentCenter];
+    [labelText setAdjustsFontSizeToFitWidth:YES];
+    labelText.backgroundColor = [UIColor clearColor];
     [labelText setText:[_ItemListsInternal objectAtIndex:row]];
-    
+
+    if (self.topItemTextColor != nil && row == 0)
+    {
+        labelText.textColor = self.topItemTextColor;
+    }
     if (self.isOptionalDropDown && row == 0)
     {
         labelText.font = [UIFont fontWithName:labelText.font.fontName size:30.0];
-        labelText.textColor = [UIColor lightGrayColor];
+
+        if (self.topItemTextColor != nil)
+        {
+            labelText.textColor = self.topItemTextColor;
+        }
+        else
+        {
+            labelText.textColor = [UIColor lightGrayColor];
+        }
     }
     return labelText;
 }
