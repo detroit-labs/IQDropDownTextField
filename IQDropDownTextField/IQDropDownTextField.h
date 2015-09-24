@@ -96,6 +96,11 @@ typedef NS_ENUM(NSInteger, IQDropDownMode) {
  */
 @property (nonatomic, assign) BOOL isOptionalDropDown;
 
+/**
+ Template for labels supplied to inputView
+ */
+@property (nonatomic, copy) UILabel *templateLabel;
+
 
 ///----------------------
 /// @name Title Selection
