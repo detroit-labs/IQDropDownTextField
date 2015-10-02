@@ -56,6 +56,11 @@
 @synthesize maximumDate = _maximumDate;
 @synthesize optionalItemText = _optionalItemText;
 
+@synthesize itemTextColor = _itemTextColor, topItemTextColor = _topItemTextColor;
+@synthesize itemFont = _itemFont;
+@synthesize pickerViewBackgroundColor = _pickerViewBackgroundColor;
+@synthesize pickerViewBorderColor = _pickerViewBorderColor;
+
 @dynamic delegate;
 
 @synthesize pickerView = _pickerView, datePicker = _datePicker, timePicker = _timePicker;
@@ -529,6 +534,16 @@
 		[_pickerView setShowsSelectionIndicator:YES];
 		[_pickerView setDelegate:self];
 		[_pickerView setDataSource:self];
+
+                if (_pickerViewBackgroundColor != nil) {
+                  [_pickerView setBackgroundColor:_pickerViewBackgroundColor];
+                }
+                if (_pickerViewBorderColor != nil) {
+                  CALayer *borderLayer = [CALayer layer];
+                  borderLayer.frame = CGRectMake(0.0f, 0.0f, _pickerView.frame.size.width, 1.0f);
+                  borderLayer.backgroundColor = _pickerViewBorderColor.CGColor;
+                  [_pickerView.layer addSublayer:borderLayer];
+                }
 	}
 	return _pickerView;
 }

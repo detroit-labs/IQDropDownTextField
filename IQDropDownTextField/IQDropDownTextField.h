@@ -107,9 +107,19 @@ typedef NS_ENUM(NSInteger, IQDropDownMode) {
 @property (nonatomic, strong) UIColor *topItemTextColor;
 
 /**
- Font of the items in dropDown list. Size will be ignored for the first item in an OptionalDropDown
+ Font of the items in dropDown list. Size will be ignored for the first item in an OptionalDropDown.
  */
 @property (nonatomic, strong) UIFont *itemFont;
+
+/**
+ Background color of pickerView. If nil, no background color will be set.
+ */
+@property (nonatomic, strong) UIColor *pickerViewBackgroundColor;
+
+/**
+ Color of pickerView's 1pt top border. If nil, it will not have a border.
+ */
+@property (nonatomic, strong) UIColor *pickerViewBorderColor;
 
 
 ///----------------------
